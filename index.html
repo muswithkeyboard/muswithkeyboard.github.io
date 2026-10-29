@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aleksey — CV</title>
+<meta name="description" content="Aleksey — Software Engineer and Researcher in Medical AI">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfbf9;
+    --surface: #ffffff;
+    --text: #1b1d21;
+    --muted: #5d636e;
+    --faint: #8a909a;
+    --line: #e4e5e1;
+    --accent: #0f6b5c;
+    --accent-soft: #e3f1ee;
+    --chip: #f1f2ef;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121417;
+      --surface: #181b1f;
+      --text: #e7e8ea;
+      --muted: #a2a8b2;
+      --faint: #767c86;
+      --line: #2a2e34;
+      --accent: #5cc4ae;
+      --accent-soft: #17302b;
+      --chip: #22262c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121417;
+    --surface: #181b1f;
+    --text: #e7e8ea;
+    --muted: #a2a8b2;
+    --faint: #767c86;
+    --line: #2a2e34;
+    --accent: #5cc4ae;
+    --accent-soft: #17302b;
+    --chip: #22262c;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 400 15.5px/1.6 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); text-decoration-color: currentColor; }
+
+  /* Language switching: only the active language is shown */
+  html[data-lang="en"] [lang="ru"],
+  html[data-lang="ru"] [lang="en"]:not(html) { display: none !important; }
+
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 16px 64px;
+  }
+
+  .toolbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .btn {
+    font: 500 13px/1 "IBM Plex Sans", sans-serif;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 9px 12px;
+    cursor: pointer;
+  }
+  .btn:hover { color: var(--text); border-color: var(--faint); }
+  .btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+  .seg { display: inline-flex; }
+  .seg .btn:first-child { border-radius: 8px 0 0 8px; }
+  .seg .btn:last-child { border-radius: 0 8px 8px 0; margin-left: -1px; }
+
+  header.hero { padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+  .name {
+    font-size: clamp(34px, 6vw, 46px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0 0 8px;
+  }
+  .role { font-size: 18px; font-weight: 500; color: var(--accent); margin: 0 0 14px; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 6px 18px;
+    font: 400 13.5px/1.5 "IBM Plex Mono", monospace;
+    color: var(--muted);
+    margin: 0; padding: 0; list-style: none;
+  }
+  .summary { margin: 20px 0 0; color: var(--muted); max-width: 66ch; }
+
+  section { padding: 28px 0 4px; }
+  h2 {
+    font: 500 12px/1 "IBM Plex Mono", monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 0 0 18px;
+  }
+
+  .item { display: grid; grid-template-columns: 170px 1fr; gap: 4px 28px; margin-bottom: 26px; }
+  .when { font: 400 13px/1.7 "IBM Plex Mono", monospace; color: var(--faint); }
+  .item h3 { font-size: 16.5px; font-weight: 600; margin: 0; line-height: 1.4; }
+  .org { color: var(--muted); margin: 2px 0 8px; font-size: 14.5px; }
+  .item ul { margin: 0; padding-left: 18px; }
+  .item li { margin: 4px 0; }
+  .item li::marker { color: var(--faint); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .tag {
+    font: 400 12px/1 "IBM Plex Mono", monospace;
+    background: var(--chip);
+    color: var(--muted);
+    padding: 6px 8px;
+    border-radius: 6px;
+  }
+  .badge {
+    display: inline-block;
+    font: 500 11px/1 "IBM Plex Mono", monospace;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 4px 6px;
+    border-radius: 5px;
+    vertical-align: 2px;
+    margin-left: 6px;
+  }
+  .links { font-size: 14px; margin-top: 8px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .links a { color: var(--accent); text-decoration: none; }
+  .links a:hover { text-decoration: underline; }
+
+  .skills { display: grid; grid-template-columns: 170px 1fr; gap: 10px 28px; margin: 0; }
+  .skills dt { font: 400 13px/1.9 "IBM Plex Mono", monospace; color: var(--faint); }
+  .skills dd { margin: 0; }
+
+  .interests { margin: 0; padding-left: 18px; }
+  .interests li { margin: 4px 0; }
+
+  .note { font-size: 13px; color: var(--faint); margin-top: 6px; }
+
+  footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13px; color: var(--faint); }
+
+  @media (max-width: 640px) {
+    .page { padding-top: 20px; }
+    .item, .skills { grid-template-columns: 1fr; gap: 2px; }
+    .item { margin-bottom: 24px; }
+    .skills dd { margin-bottom: 8px; }
+    .toolbar { justify-content: space-between; }
+  }
+
+  @media print {
+    @page { size: A4; margin: 14mm 14mm 12mm; }
+    :root, :root[data-theme="dark"] {
+      --bg: #fff; --surface: #fff; --text: #111; --muted: #444; --faint: #6b6f76;
+      --line: #ddd; --accent: #0f6b5c; --accent-soft: #e3f1ee; --chip: #f1f2ef;
+    }
+    body { font-size: 10.5pt; line-height: 1.45; }
+    .page { max-width: none; padding: 0; }
+    .toolbar, footer { display: none; }
+    header.hero { padding-bottom: 14px; }
+    .name { font-size: 26pt; }
+    .role { font-size: 13pt; margin-bottom: 8px; }
+    .summary { margin-top: 10px; }
+    section { padding: 14px 0 0; }
+    h2 { margin-bottom: 10px; }
+    .item { grid-template-columns: 120px 1fr; gap: 2px 18px; margin-bottom: 14px; break-inside: avoid; }
+    .skills { grid-template-columns: 120px 1fr; gap: 4px 18px; }
+    .tags { margin-top: 6px; }
+    .tag { padding: 3px 6px; }
+    a { text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="Language">
+      <button class="btn" data-set-lang="en" aria-pressed="true">EN</button>
+      <button class="btn" data-set-lang="ru" aria-pressed="false">RU</button>
+    </div>
+    <button class="btn" onclick="window.print()">
+      <span lang="en">Download PDF</span><span lang="ru">Скачать PDF</span>
+    </button>
+  </div>
+
+  <header class="hero">
+    <h1 class="name"><span lang="en">Aleksey</span><span lang="ru">Алексей</span></h1>
+    <p class="role">
+      <span lang="en">Software Engineer · Researcher in Medical AI</span>
+      <span lang="ru">Инженер-программист · исследователь в области медицинского ИИ</span>
+    </p>
+    <ul class="meta">
+      <li><a href="mailto:muswithsword@gmail.com">muswithsword@gmail.com</a></li>
+      <li><a href="https://github.com/muswithkeyboard">github.com/muswithkeyboard</a></li>
+    </ul>
+    <p class="summary" lang="en">
+      Backend engineer and researcher building software for healthcare. Nearly two years of production
+      backend development at MTS, Russia's largest mobile operator; now building research data infrastructure
+      for a laboratory. I focus on clinical decision support, verifiable AI and reliable data systems.
+    </p>
+    <p class="summary" lang="ru">
+      Backend-разработчик и исследователь, создаю программные системы для медицины. Почти два года
+      промышленной backend-разработки в МТС — крупнейшем мобильном операторе России; сейчас разрабатываю
+      инфраструктуру исследовательских данных лаборатории. Направления: поддержка клинических решений,
+      проверяемый ИИ и надёжные системы хранения данных.
+    </p>
+  </header>
+
+  <section>
+    <h2><span lang="en">Experience</span><span lang="ru">Опыт работы</span></h2>
+
+    <div class="item">
+      <div class="when"><span lang="en">2026 — present</span><span lang="ru">2026 — н. в.</span></div>
+      <div>
+        <h3><span lang="en">Laboratory Research Data Portal</span><span lang="ru">Портал исследовательских данных лаборатории</span></h3>
+        <p class="org"><span lang="en">Software Engineer</span><span lang="ru">Инженер-программист</span></p>
+        <ul lang="en">
+          <li>Building a FastAPI portal for the laboratory's research datasets and projects.</li>
+          <li>Converting the legacy archive to the BIDS standard: label parsing, matching behavioural data to recorded signals, handling inconsistent file formats.</li>
+          <li>Data integrity at scale: checksums preserved across nightly re-indexing, deduplicated copies via hard links, restricted access zones.</li>
+          <li>Operations: alerts, full-text search, scheduled maintenance; changes shipped through pull requests with automated GitHub checks.</li>
+        </ul>
+        <ul lang="ru">
+          <li>Разрабатываю портал на FastAPI для исследовательских наборов данных и проектов лаборатории.</li>
+          <li>Перевожу архив в стандарт BIDS: разбор меток, сопоставление поведенческих данных с записанными сигналами, обработка разнородных форматов.</li>
+          <li>Целостность данных: контрольные суммы сохраняются при ночной переиндексации, дубликаты хранятся как жёсткие ссылки, зоны ограниченного доступа.</li>
+          <li>Эксплуатация: оповещения, полнотекстовый поиск, плановое обслуживание; изменения проходят через pull request и автоматические проверки GitHub.</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">BIDS</span><span class="tag">GitHub Actions</span></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="when"><span lang="en">Sep 2024 — May 2026</span><span lang="ru">Сен 2024 — май 2026</span></div>
+      <div>
+        <h3><span lang="en">Software Engineer (Backend)</span><span lang="ru">Инженер-программист (backend)</span></h3>
+        <p class="org"><span lang="en">MTS PJSC (Mobile TeleSystems)</span><span lang="ru">ПАО «МТС» (Мобильные ТелеСистемы)</span></p>
+        <ul lang="en">
+          <li>Designed and built the backend of an internal report management platform in Go (Gin) with PostgreSQL (GORM).</li>
+          <li>Implemented the REST API for the full report lifecycle: creation, editing, document organisation, search and export.</li>
+          <li>Owned deployment: containerised the service with Docker, provisioned and configured servers, maintained the production environment.</li>
+        </ul>
+        <ul lang="ru">
+          <li>Спроектировал и разработал backend внутренней платформы управления отчётами на Go (Gin) и PostgreSQL (GORM).</li>
+          <li>Реализовал REST API для полного жизненного цикла отчётов: создание, редактирование, структурирование документов, поиск и экспорт.</li>
+          <li>Отвечал за развёртывание: контейнеризация сервиса в Docker, настройка серверов, поддержка рабочего окружения.</li>
+        </ul>
+        <div class="tags"><span class="tag">Go</span><span class="tag">Gin</span><span class="tag">PostgreSQL</span><span class="tag">GORM</span><span class="tag">Docker</span><span class="tag">Linux</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span lang="en">Selected projects</span><span lang="ru">Избранные проекты</span></h2>
+
+    <div class="item">
+      <div class="when">2026</div>
+      <div>
+        <h3>Justmedit <span class="badge">MedITron 2026</span></h3>
+        <p class="org">
+          <span lang="en">Hackathon project · Sechenov University</span>
+          <span lang="ru">Проект хакатона · Сеченовский университет</span>
+        </p>
+        <ul lang="en">
+          <li>Screening for anemia and latent iron, B12 and folate deficiencies from blood tests, with separate reports for doctors and patients.</li>
+          <li>WHO 2024 rules and urgent flags are deterministic; the ML model classifies on top of them and cannot override them.</li>
+          <li>Input from forms, files and photos of lab forms (local OCR); encrypted storage of lab values; API for clinics and laboratories.</li>
+        </ul>
+        <ul lang="ru">
+          <li>Скрининг анемий и скрытых дефицитов железа, B12 и фолатов по анализу крови; отдельные отчёты для врача и пациента.</li>
+          <li>Правила ВОЗ 2024 и срочные признаки работают детерминированно; ML-модель классифицирует поверх них и не может их отменить.</li>
+          <li>Ввод из формы, файла и фото бланка (локальный OCR); шифрование значений анализов; API для клиник и лабораторий.</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Starlette</span><span class="tag">Tesseract</span><span class="tag">Docker</span></div>
+        <div class="links">
+          <a href="https://adv-web.tech"><span lang="en">Live demo</span><span lang="ru">Демо</span> ↗</a>
+          <a href="https://github.com/muswithkeyboard/justmedit-Meditron"><span lang="en">Source</span><span lang="ru">Код</span> ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="when">2026</div>
+      <div>
+        <h3><span lang="en">DMS Assistant</span><span lang="ru">Ассистент ДМС</span></h3>
+        <p class="org"><span lang="en">Hackathon project</span><span lang="ru">Проект хакатона</span></p>
+        <ul lang="en">
+          <li>Answers health-insurance questions strictly from contract documents; every statement links to the document, clause and fragment, verified in code.</li>
+          <li>Fully functional without an LLM (rule-based routing plus a compact ONNX encoder); emails are only drafted, never sent.</li>
+        </ul>
+        <ul lang="ru">
+          <li>Отвечает на вопросы по ДМС строго по документам договора; каждый вывод ссылается на документ, пункт и фрагмент, ссылка проверяется кодом.</li>
+          <li>Полностью работает без LLM (маршрутизация правилами и компактный ONNX-энкодер); письма только черновики, сервер их не отправляет.</li>
+        </ul>
+        <div class="tags"><span class="tag">Python</span><span class="tag">RAG</span><span class="tag">ONNX</span><span class="tag">SQLite</span><span class="tag">Docker</span></div>
+        <div class="links">
+          <a href="https://github.com/muswithkeyboard/dms-assistant"><span lang="en">Source</span><span lang="ru">Код</span> ↗</a>
+        </div>
+      </div>
+    </div>
+    <p class="note">
+      <span lang="en">Hackathon projects are research prototypes, not medical devices.</span>
+      <span lang="ru">Проекты хакатонов — исследовательские прототипы, не медицинские изделия.</span>
+    </p>
+  </section>
+
+  <section>
+    <h2><span lang="en">Research interests</span><span lang="ru">Области исследований</span></h2>
+    <ul class="interests" lang="en">
+      <li>Machine learning for laboratory data</li>
+      <li>Clinical decision support systems</li>
+      <li>Document question answering and RAG with traceable citations</li>
+      <li>Research data management and standards (BIDS)</li>
+    </ul>
+    <ul class="interests" lang="ru">
+      <li>Машинное обучение для лабораторных данных</li>
+      <li>Системы поддержки принятия врачебных решений</li>
+      <li>Ответы по документам и RAG с проверяемыми ссылками</li>
+      <li>Управление исследовательскими данными и стандарты (BIDS)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span lang="en">Education</span><span lang="ru">Образование</span></h2>
+    <div class="item">
+      <div class="when"></div>
+      <div>
+        <h3><span lang="en">Sechenov University</span><span lang="ru">Сеченовский университет</span></h3>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span lang="en">Skills</span><span lang="ru">Навыки</span></h2>
+    <dl class="skills">
+      <dt><span lang="en">Languages</span><span lang="ru">Языки</span></dt>
+      <dd>Python, Go, TypeScript, SQL</dd>
+      <dt>Backend</dt>
+      <dd>FastAPI, Starlette, Gin, PostgreSQL, GORM, SQLite, REST API</dd>
+      <dt><span lang="en">ML &amp; data</span><span lang="ru">ML и данные</span></dt>
+      <dd>scikit-learn, pandas, NumPy, ONNX, LLM / RAG, Jupyter</dd>
+      <dt><span lang="en">Infrastructure</span><span lang="ru">Инфраструктура</span></dt>
+      <dd>Docker, Linux, Git, GitHub Actions</dd>
+      <dt>Mobile</dt>
+      <dd>React Native, Expo</dd>
+    </dl>
+  </section>
+
+  <footer>
+    <span lang="en">Last updated October 2026</span><span lang="ru">Обновлено в октябре 2026</span>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll('[data-set-lang]');
+    function setLang(lang) {
+      root.setAttribute('data-lang', lang);
+      root.setAttribute('lang', lang);
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setLang === lang)); });
+      try { localStorage.setItem('cv-lang', lang); } catch (e) {}
+    }
+    var initial = 'en';
+    try {
+      var saved = localStorage.getItem('cv-lang');
+      if (saved === 'en' || saved === 'ru') initial = saved;
+      else if (/^ru/i.test(navigator.language || '')) initial = 'ru';
+    } catch (e) {}
+    var fromUrl = new URLSearchParams(location.search).get('lang');
+    if (fromUrl === 'en' || fromUrl === 'ru') initial = fromUrl;
+    setLang(initial);
+    buttons.forEach(function (b) { b.addEventListener('click', function () { setLang(b.dataset.setLang); }); });
+  })();
+</script>
+</body>
+</html>
